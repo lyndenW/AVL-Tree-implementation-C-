@@ -8,21 +8,6 @@
 #include <utility>
 #include <functional>
 
-// LAB 8: Ro-Tater Tots
-// Identifier: EAA16B5C3724FBFD78F132136AABBBBA4952E261
-// INSTRUCTIONS:
-// finish the implementations for:
-// AVL::Node* AVL::rotate_right(AVL::Node* node)
-// AVL::Node* AVL::rotate_left(AVL::Node* node)
-// AVL::Node* AVL::insert_node(AVL::Node*, int datum)
-
-// Modify the parts that say YOUR CODE HERE (starting at line 209).
-// The rest has been done for you.
-
-// You may make any changes you like to this file.
-
-
-// probably useful
 int max(int x, int y) {
     return x > y ? x : y;
 }
@@ -212,17 +197,10 @@ AVL::Node* AVL::insert_node(AVL::Node* node, int datum) {
         return new Node{ datum, 1, nullptr, nullptr }; // it has height 1
     }
     if (datum < node->datum) {
-        node->left = insert_node(node->left, datum);
-      //  node->fix_height(); // remember to fix the height of a node after modifying its children
-        // YOUR CODE HERE
-        // YOUR CODE HERE
-        
+        node->left = insert_node(node->left, datum);  
     }
     else {
-        node->right = insert_node(node->right, datum);
-          
-        // YOUR CODE HERE
-        
+        node->right = insert_node(node->right, datum);       
     }    
     node->fix_height(); // remember to fix the height of a node after modifying its children  
     if (node->balance() > 1) {
@@ -242,7 +220,6 @@ AVL::Node* AVL::insert_node(AVL::Node* node, int datum) {
 }
 
 // rotate_left performs a left rotation; it returns the new 'root' of the rotated subtree
-// (remember to update the heights of nodes!)
 // you may assume that it has a right child
 AVL::Node* AVL::rotate_left(AVL::Node* node) {
     Node* temp = node->right;
@@ -254,7 +231,6 @@ AVL::Node* AVL::rotate_left(AVL::Node* node) {
 }
 
 // rotate_right performs a right rotation; it returns the new 'root' of the rotated subtree
-// (remember to update the heights of nodes!)
 // you may assume that it has a left child
 AVL::Node* AVL::rotate_right(AVL::Node* node) {
     Node* temp = node->left;
